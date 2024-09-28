@@ -237,8 +237,8 @@ void buscaProfundidade(arvore *raizL) {
         noL *comeco = removerComecoL(&borda);
         arvore *no_arvore = comeco->noa;
         printf("%d ", no_arvore->valor);
-        inserirComecoL(&borda, no_arvore->esq);
         inserirComecoL(&borda, no_arvore->dir);
+        inserirComecoL(&borda, no_arvore->esq);
         free(comeco);
     }
 }
