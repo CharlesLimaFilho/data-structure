@@ -13,6 +13,7 @@ typedef struct no {
 } noL;
 
 arvore *inserir(arvore *raiz, int valor);
+void inserir_pp(arvore **raiz, int valor);
 arvore *buscar(arvore *raiz, int valor);
 arvore *remover(arvore *raiz, int valor);
 void preOrdem(arvore *raiz);
@@ -35,6 +36,7 @@ int main() {
     noa = inserir(noa, 40);
     noa = inserir(noa, 30);
     noa = inserir(noa, 22);
+    inserir_pp(&noa, 100);
 
     preOrdem(noa);
     printf("\n");
@@ -55,6 +57,7 @@ int main() {
     noa = remover(noa, 40);
     noa = remover(noa, 30);
     noa = remover(noa, 22);
+    noa = remover(noa, 100);
     return 0;
 }
 
@@ -73,6 +76,25 @@ arvore *inserir(arvore *raiz, int valor) {
         raiz->esq = inserir(raiz->esq, valor);
     }
     return raiz;
+}
+
+
+void inserir_pp(arvore **raiz, int valor) {
+    if(!*raiz) {
+        arvore *novo = malloc(sizeof(arvore));
+        novo->dir = NULL;
+        novo->esq = NULL;
+        novo->valor = valor;
+        *raiz = novo;
+        return;
+    }
+
+    arvore *r = *raiz;
+    if (valor > r->valor) {
+        inserir_pp(&(r->dir), valor);
+    } else if (valor < r->valor) {
+        inserir_pp(&(r->esq), valor);
+    }
 }
 
 arvore *buscar(arvore *raiz, int valor) {

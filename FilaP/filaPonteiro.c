@@ -2,23 +2,21 @@
 #include <stdlib.h>
 
 
-typedef struct {
+typedef struct fila1{
 	int valor;
-    struct fila *prox;
-}fila;
+    struct fila1 *prox;
+} fila;
 
 
-void init(fila** initFila);
 int add(fila **addFila, int addValor);
 int removeFila(fila **removeFila);
 void peek(fila *peekFila);
 void list(fila *listFila);
-int finish(fila *finishFila);
+void finish(fila *finishFila);
 
 int main() {
-	fila *fila;
+	fila *fila = NULL;
     int op, valorMain;
-    init(&fila);
 	
 	for (;;) {
         printf("[1] - Adicionar\n[2] - Remover\n[3] - Ver o primeiro\n[4] - Listar todos\n[0] - Encerrar\n->");
@@ -26,7 +24,7 @@ int main() {
 
         switch (op) {
             case 1 :
-                printf("\nDigite o valor que deseja adicionar: ");
+                printf("\nDigite o valor que deseja adicionar:");
                 scanf("%d", &valorMain);
                 add(&fila, valorMain);
                 break;
@@ -53,10 +51,6 @@ int main() {
     }
 }
 
-
-void init(fila** initFila) {
-    *initFila = NULL;
-}
 
 
 int add(fila **addFila, int addValor) {
@@ -89,7 +83,7 @@ int removeFila(fila **removeFila) {
 
 void peek(fila *peekFila) {
 	if (peekFila) {
-        printf("%d", peekFila->valor);
+        printf("%d\n", peekFila->valor);
     }
 }
 
@@ -102,15 +96,11 @@ void list(fila *listFila) {
     printf("\n");
 }
 
-int finish(fila *finishFila) {
+void finish(fila *finishFila) {
     fila *aux = finishFila;
-	if (finishFila != NULL) {
-		while (aux != NULL) {
-            aux = aux->prox;
-			free(finishFila);
-            finishFila = aux;
-		}
-		return 1;	
-	}
-	return 0;
+    while (aux) {
+        aux = aux->prox;
+        free(finishFila);
+        finishFila = aux;
+    }
 }

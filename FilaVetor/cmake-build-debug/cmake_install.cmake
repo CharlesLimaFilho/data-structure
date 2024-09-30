@@ -1,4 +1,4 @@
-# Install script for directory: C:/Dev/repos/git/CLion/FilaVetor
+# Install script for directory: C:/Dev/repos/git/CLion/data-structure/data-structure/FilaVetor
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Dev/repos/git/CLion/FilaVetor/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Dev/repos/git/CLion/data-structure/data-structure/FilaVetor/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
